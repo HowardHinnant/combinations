@@ -10,7 +10,7 @@
 
 //  Details are in namespace detail.  Every effort has been made to make
 //  combine_discontinuous and permute as fast as possible.  They minimize the number
-//  of swaps that are performed. Everything else builds on these two primitives. 
+//  of swaps that are performed. Everything else builds on these two primitives.
 //  The most complicated algorithm is for_each_reversible_permutation.  But it
 //  builds on combine_discontinuous and permute and I believe represents a minimum
 //  number of swaps.  Without care, algorithms such as for_each_reversible_permutation
@@ -580,7 +580,7 @@ for_each_circular_permutation(BidirIter first,
     for_each_combination(first, mid, last, detail::circular_permutation<Function&,
                           BidirIter>(f, std::distance(first, mid)));
     return std::move(f);
-}    
+}
 
 template <class UInt>
 UInt
@@ -747,7 +747,6 @@ bool
 reversible_permutation<Function, Size>::operator()(BidirIter first,
                                                    BidirIter last)
 {
-    typedef typename std::iterator_traits<BidirIter>::difference_type difference_type;
     typedef rev2<bound_range<Function&, BidirIter>, BidirIter> F2;
     typedef rev3<bound_range<Function&, BidirIter>, BidirIter> F3;
     // When the range is 0 - 2, then this is just a combination of N out of N
@@ -846,7 +845,7 @@ for_each_reversible_permutation(BidirIter first,
                   detail::reversible_permutation<Function&, D>(f,
                                               std::distance(first, mid)));
     return std::move(f);
-}    
+}
 
 template <class UInt>
 UInt
@@ -930,7 +929,7 @@ for_each_reversible_circular_permutation(BidirIter first,
     for_each_combination(first, mid, last, detail::reverse_circular_permutation<Function&,
                           BidirIter>(f, std::distance(first, mid)));
     return std::move(f);
-}    
+}
 
 template <class UInt>
 UInt
