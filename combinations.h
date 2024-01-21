@@ -443,7 +443,7 @@ typename std::enable_if
     std::is_unsigned<Int>::value,
     void
 >::type
-check_non_negative(Int d1, Int d2)
+check_non_negative(Int, Int)
 {
 }
 
