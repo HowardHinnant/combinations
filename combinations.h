@@ -910,7 +910,6 @@ public:
     {
         if (s_ == 1)
             return f_(first, last);
-        typedef typename std::iterator_traits<BidirIter>::difference_type D;
         typedef bound_range<Function, BidirIter> BoundFunc;
         BoundFunc f(f_, first, last);
         BidirIter n = std::next(first);
