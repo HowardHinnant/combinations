@@ -443,7 +443,7 @@ typename std::enable_if
     std::is_unsigned<Int>::value,
     void
 >::type
-check_non_negative(Int d1, Int d2)
+check_non_negative(Int, Int)
 {
 }
 
@@ -538,8 +538,8 @@ template <class BidirIter>
 std::uintmax_t
 count_each_permutation(BidirIter first, BidirIter mid, BidirIter last)
 {
-    return count_each_permutation<std::uintmax_t>
-                          (std::distance(first, mid), std::distance(mid, last));
+    return count_each_permutation(static_cast<std::uintmax_t>(std::distance(first, mid)),
+                                  static_cast<std::uintmax_t>(std::distance(mid, last)));
 }
 
 namespace detail
@@ -910,7 +910,6 @@ public:
     {
         if (s_ == 1)
             return f_(first, last);
-        typedef typename std::iterator_traits<BidirIter>::difference_type D;
         typedef bound_range<Function, BidirIter> BoundFunc;
         BoundFunc f(f_, first, last);
         BidirIter n = std::next(first);
