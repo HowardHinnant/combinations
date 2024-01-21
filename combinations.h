@@ -538,8 +538,8 @@ template <class BidirIter>
 std::uintmax_t
 count_each_permutation(BidirIter first, BidirIter mid, BidirIter last)
 {
-    return count_each_permutation<std::uintmax_t>
-                          (std::distance(first, mid), std::distance(mid, last));
+    return count_each_permutation(static_cast<std::uintmax_t>(std::distance(first, mid)),
+                                  static_cast<std::uintmax_t>(std::distance(mid, last)));
 }
 
 namespace detail
