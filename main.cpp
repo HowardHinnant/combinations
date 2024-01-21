@@ -9,10 +9,10 @@
 // print out a range separated by commas,
 //    return number of values printed.
 template <class It>
-unsigned
+size_t
 display(It begin, It end)
 {
-    unsigned r = 0;
+    size_t r = 0;
     if (begin != end)
     {
         std::cout << *begin;
@@ -29,10 +29,10 @@ display(It begin, It end)
 // functor called for each permutation
 class f
 {
-    unsigned len;
+    size_t len;
     std::uint64_t count;
 public:
-    explicit f(unsigned l) : len(l), count(0) {}
+    explicit f(size_t l) : len(l), count(0) {}
 
     template <class It>
         bool operator()(It first, It last)  // called for each permutation
@@ -41,7 +41,7 @@ public:
             ++count;
             // print out [first, mid) surrounded with [ ... ]
             std::cout << "[ ";
-            unsigned r = display(first, last);
+            size_t r = display(first, last);
             // If [mid, last) is not empty, then print it out too
             //     prefixed by " | "
             if (r < len)
@@ -67,10 +67,10 @@ int main()
                                                v.end(),
                                                f(v.size()));
     // print out "---" to the correct length for the above output
-    unsigned e = 3 * r + 2;
+    size_t e = 3 * r + 2;
     if (r < v.size())
         e += 1 + 3 * (v.size() - r);
-    for (unsigned i = 0; i < e; ++i)
+    for (size_t i = 0; i < e; ++i)
         std::cout << '-';
     // print out the permuted vector to show that it has the original order
     std::cout << "\n[ ";
@@ -83,3 +83,4 @@ int main()
     std::cout << "Found " << count << " permutations of " << v.size()
               << " objects taken " << r << " at a time.\n";
 }
+
